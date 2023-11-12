@@ -13,8 +13,7 @@ int _printf(const char *format, ...)
 
 	func_f ff[] = {
 		{'c', print_char},
-		{'s', print_str},
-		{'%', print_37}
+		{'s', print_str}
 	};
 
 	va_start(args, format);
@@ -33,6 +32,11 @@ int _printf(const char *format, ...)
 			if (*(format + 1) == (ff[i].spc))
 			{
 				len += ff[i].f(args);
+				format += 2;
+			}
+			else if (*(format + 1) == '%')
+			{
+				len += write(1, format + 1, 1);
 				format += 2;
 			}
 			i++;
