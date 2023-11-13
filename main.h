@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <limits.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
@@ -23,5 +24,7 @@ typedef struct func_f
 int _printf(const char *format, ...);
 int print_char(va_list);
 int print_str(va_list);
+int print_int(va_list);
+int print_num(long int, int);
 
 #endif
