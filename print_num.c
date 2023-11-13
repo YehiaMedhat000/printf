@@ -13,8 +13,19 @@ int print_num(long int n, int base)
 	int len = 0;
 	unsigned long int num = n;
 	char *symbols = "0123456789abcdef";
-	char buff[50], *ptr;
+	char *buff, *ptr;
 	char negative = '\0';
+
+    	buff = (char *)malloc(sizeof(char) * 50);
+	if (!buff)
+	{
+		return (0);
+	}
+    	ptr = (char *)malloc(sizeof(char) * 50);
+	if (!ptr)
+	{
+		return (0);
+	}
 
 	if (n < 0)
 	{
