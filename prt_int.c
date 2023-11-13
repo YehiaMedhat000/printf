@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * print_int - Prints integer base 10
+ * prt_int - Prints integer base 10
  * @args: Dynamic arguments list
  * Return: Length of output
  */
 
-int print_int(va_list args)
+int prt_int(va_list args)
 {
-	long int num;
+	int num;
 
 	num = va_arg(args, long int);
 	if (num)

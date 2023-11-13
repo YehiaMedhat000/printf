@@ -1,49 +1,38 @@
 #include "main.h"
 
 /**
- * print_num - Prints number of
+ * prt_num - Prints number of
  * any base
  * @args: Dynamic argument list
  * @base: The base of output number
  * Return: Length of output
  */
 
-int print_num(long int n, int base)
+int prt_num(long int n, int base)
 {
 	int len = 0;
 	unsigned long int num = n;
-	char *symbols = "0123456789abcdef";
-	char *buff, *ptr;
-	char negative = '\0';
+	static char *symbols = "0123456789abcdef";
+	static char buff[40], *ptr;
+	char neg = '\0';
 
-    	buff = (char *)malloc(sizeof(char) * 50);
-	if (!buff)
-	{
-		return (0);
-	}
-    	ptr = (char *)malloc(sizeof(char) * 50);
-	if (!ptr)
-	{
-		return (0);
-	}
-
+	/* Check if neg */
 	if (n < 0)
 	{
 		num = -n;
-		negative = '-';
+		neg = '-';
 	}
 	
-	ptr = buff;
+	ptr = buff[40];
 	*ptr = '\0';
 
-	while (num)
-	{
+	do {
 		*(--ptr) = symbols[num % base];
 		num /= base;
-	}
+	} while (num);
 	/* put the negative if exists */
-	if (negative)
-		*(--ptr) = negative;
+	if (neg)
+		*(--ptr) = neg;
 
 	/* Write to the buffer incrment */
 	while (ptr && *ptr)

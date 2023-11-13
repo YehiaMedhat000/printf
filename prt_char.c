@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * print_char - Prints character
+ * prt_char - Prints character
  * @args: Dynamic arguments list
  * Return: Length of output (1)
  * (0) otherwise
  */
 
-int print_char(va_list args)
+int prt_char(va_list args)
 {
 	int c = va_arg(args, int);
 
