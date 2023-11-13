@@ -68,8 +68,6 @@ int prt_num(long int, int);
 int print_exc_string(va_list val);
 int buffer(char c);
 
-/*putchar handlers*/
-int _putchar(char c);
 
 
 
