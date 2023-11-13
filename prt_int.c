@@ -12,6 +12,6 @@ int prt_int(va_list args)
 
 	num = va_arg(args, long int);
 	if (num)
-		return (print_num(num, 10));
-	return (0);
+		return (prt_num(num, 10));
+	return (write(1, &"NULL", 4));
 }

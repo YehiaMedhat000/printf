@@ -23,7 +23,7 @@ int prt_num(long int n, int base)
 		neg = '-';
 	}
 	
-	ptr = buff[40];
+	ptr = &buff[40];
 	*ptr = '\0';
 
 	do {

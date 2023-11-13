@@ -12,10 +12,10 @@ int _printf(const char *format, ...)
 	int i = 0, len = 0, format_len = 0;
 
 	func_f ff[] = {
-		{'c', print_char},
-		{'s', print_str},
-		{'i', print_int},
-		{'d', print_int},
+		{'c', prt_char},
+		{'s', prt_str},
+		{'i', prt_int},
+		{'d', prt_int},
 		{'\0', NULL}
 	};
 
