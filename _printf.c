@@ -13,7 +13,10 @@ int _printf(const char *format, ...)
 
 	func_f ff[] = {
 		{'c', print_char},
-		{'s', print_str}
+		{'s', print_str},
+		{'i', print_int},
+		{'d', print_int},
+		{'\0', NULL}
 	};
 
 	va_start(args, format);
@@ -27,6 +30,7 @@ int _printf(const char *format, ...)
 	while (*format)
 	{
 		/* Formatters handling */
+		i = 0;
 		while (*format == '%')
 		{
 			if (*(format + 1) == (ff[i].spc))
