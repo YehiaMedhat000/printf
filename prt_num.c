@@ -3,7 +3,7 @@
 /**
  * prt_num - Prints number of
  * any base
- * @args: Dynamic argument list
+ * @n: Number passed
  * @base: The base of output number
  * Return: Length of output
  */
@@ -22,7 +22,7 @@ int prt_num(long int n, int base)
 		num = -n;
 		neg = '-';
 	}
-	
+
 	ptr = &buff[40];
 	*ptr = '\0';
 
