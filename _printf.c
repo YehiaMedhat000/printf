@@ -1,52 +1,67 @@
 #include "main.h"
 
-/**
- * _printf - Mock printf function
- * @format: Formatted string to print
- * Return: length of output
- */
+void print_buffer(char buffer[], int *buff_ind);
 
+/**
+ *_printf - Used printf function
+ *@format: Input format.
+ *Return: Returns printed characters.
+ */
 int _printf(const char *format, ...)
 {
-	va_list(args);
-	int i = 0, len = 0, format_len = 0;
+	int i, printed = 0, printed_chars = 0;
+	int flags, width, precision, size, buff_ind = 0;
+	va_list list;
+	char buffer[BUFF_SIZE];
 
-	func_f ff[] = {
-		{'c', print_char},
-		{'s', print_str},
-		{'i', print_int},
-		{'d', print_int},
-		{'\0', NULL}
-	};
-
-	va_start(args, format);
-
-	format_len = strlen(format);
-	/* Errors handling */
-	if (!format || (*(format) == '%' && *(format + 1) == '\0') || !format_len)
+	if (format == NULL)
 		return (-1);
 
-	/* The function core */
-	while (*format)
+	va_start(list, format);
+
+	for (i = 0; format && format[i] != '\0'; i++)
 	{
-		/* Formatters handling */
-		i = 0;
-		while (*format == '%')
+		if (format[i] != '%')
 		{
-			if (*(format + 1) == (ff[i].spc))
-			{
-				len += ff[i].f(args);
-				format += 2;
-			}
-			else if (*(format + 1) == '%')
-			{
-				len += write(1, "%%", 1);
-				format += 2;
-			}
-			i++;
+			buffer[buff_ind++] = format[i];
+			if (buff_ind == BUFF_SIZE)
+				print_buffer(buffer, &buff_ind);
+			/*write(1, &format[i], 1); */
+			printed_chars++;
 		}
-		len += write(1, format++, 1);
+		else
+		{
+			print_buffer(buffer, &buff_ind);
+			flags = get_flags(format, &i);
+			width = get_width(format, &i, list);
+			precision = get_precision(format, &i, list);
+			size = get_size(format, &i);
+			++i;
+			printed = handle_print(format, &i, list, buffer,
+				flags, width, precision, size);
+			if (printed == -1)
+				return (-1);
+			printed_chars += printed;
+		}
 	}
-	va_end(args);
-	return (len);
+
+	print_buffer(buffer, &buff_ind);
+
+	va_end(list);
+
+	return (printed_chars);
 }
+
+/**
+ *print_buffer - buffer's format if exist
+ *@buffer: buffer' charactert's array
+ *@buff_ind: Char (index) length.
+ */
+void print_buffer(char buffer[], int *buff_ind)
+{
+	if (*buff_ind > 0)
+		write(1, &buffer[0], *buff_ind);
+
+	*buff_ind = 0;
+}
+
