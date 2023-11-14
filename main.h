@@ -78,8 +78,6 @@ int write_mod(buffer *buf, va_list v_ls);
 
 int write_int(buffer *buf, va_list v_ls);
 
-int _print_rev_string(va_list list)
-
 char *itoc(int num, char *dest);
 
 #endif
