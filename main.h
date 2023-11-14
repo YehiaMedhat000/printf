@@ -67,8 +67,11 @@ int prt_int(va_list);
 int prt_num(long int, int);
 int print_exc_string(va_list val);
 int buffer(char c);
-
-/*putchar handlers*/
+int _print_unsigned_int(va_list list);
+int rev_string(char *s);
+int print_37(void);
+int print_c(va_list val);
+int print_s(va_list val);
 int _putchar(char c);
 
 
