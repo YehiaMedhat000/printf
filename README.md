@@ -1,4 +1,10 @@
-# printf
-Collaborative printf Project
+# Printf
+Our first collaborative project at ALX School, The printf project
+is a Low-Level Programming project writen in C language.
 
-- El Mehdi NAJIM - Layla ABKARI
+
+
+# Authors
+
+- Yehia Medhat Yusuf Selim - [Github](https://github.com/YehiaMedhat000) 
+- Rida Essahi - [Github](https://github.com/Rida003)
